@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Catálogo - Jackelin Laza | Tienda Orgánica</title>
+
+    <!-- Fuentes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Estilos Personalizados -->
+    <link href="styles.css" rel="stylesheet" />
+
+    <!-- Lógica y Configuración (Con defer para asegurar carga correcta del DOM) -->
+    <script src="script.js" defer></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body class="bg-white text-[#27724e] transition-colors duration-300">
+    <div class="relative flex flex-col w-full bg-white min-h-screen">
+        <header
+            class="flex items-center justify-between border-b border-solid border-[#27724e]/10 px-6 md:px-20 py-4 sticky top-0 bg-white/95 backdrop-blur-md z-50 transition-all duration-300">
+            <div class="flex items-center gap-4 lg:gap-12">
+                <!-- Botón Menú Hamburguesa (Móvil) -->
+                <button id="mobile-menu-btn"
+                    class="lg:hidden p-2 -ml-2 text-[#27724e] hover:bg-[#27724e]/5 rounded-lg transition-colors cursor-pointer z-50">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+
+                <!-- Logo Clicable -->
+                <a href="./index.html" class="flex flex-col leading-none hover:opacity-80 transition-opacity">
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-[#C5A059] font-bold">Tienda Orgánica</span>
+                    <h2 class="text-xl font-serif font-bold text-[#27724e] tracking-tight">Jackelin Laza</h2>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="text-sm font-semibold hover:text-[#27724e]/70 transition-colors"
+                        href="./index.html">Inicio</a>
+                    <div class="relative group">
+                        <a class="text-sm font-bold text-[#27724e] flex items-center gap-1 py-4" href="./tienda.html">
+                            Tienda
+                            <span
+                                class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
+                        </a>
+                        <!-- Dropdown de Categorías -->
+                        <div
+                            class="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl border border-[#27724e]/5 p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-[100]">
+                            <div class="flex flex-col gap-1">
+                                <a href="./tienda.html"
+                                    class="px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-[#27724e]/5 transition-colors">Todos
+                                    los Productos</a>
+                                <hr class="my-2 border-[#27724e]/5">
+                                <button onclick="filterByCategory('Sistema Digestivo')"
+                                    class="text-left px-4 py-2.5 rounded-xl text-xs font-semibold hover:bg-[#27724e]/5 transition-colors uppercase tracking-wider">Sistema
+                                    Digestivo</button>
+                                <button onclick="filterByCategory('Sistema Inmune')"
+                                    class="text-left px-4 py-2.5 rounded-xl text-xs font-semibold hover:bg-[#27724e]/5 transition-colors uppercase tracking-wider">Sistema
+                                    Inmune</button>
+                                <button onclick="filterByCategory('Sistema Nervioso')"
+                                    class="text-left px-4 py-2.5 rounded-xl text-xs font-semibold hover:bg-[#27724e]/5 transition-colors uppercase tracking-wider">Sistema
+                                    Nervioso</button>
+                                <button onclick="filterByCategory('Sistema Osteoarticular')"
+                                    class="text-left px-4 py-2.5 rounded-xl text-xs font-semibold hover:bg-[#27724e]/5 transition-colors uppercase tracking-wider">Sistema
+                                    Osteoarticular</button>
+                                <button onclick="filterByCategory('Sistema Hormonal')"
+                                    class="text-left px-4 py-2.5 rounded-xl text-xs font-semibold hover:bg-[#27724e]/5 transition-colors uppercase tracking-wider">Sistema
+                                    Hormonal</button>
+                                <button onclick="filterByCategory('Sistema Próstata')"
+                                    class="text-left px-4 py-2.5 rounded-xl text-xs font-semibold hover:bg-[#27724e]/5 transition-colors uppercase tracking-wider">Sistema
+                                    Próstata</button>
+                                <button onclick="filterByCategory('Circulación - Metabólico - Energía')"
+                                    class="text-left px-4 py-2.5 rounded-xl text-xs font-semibold hover:bg-[#27724e]/5 transition-colors uppercase tracking-wider">Energía
+                                    y Metabolismo</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-sm font-semibold hover:text-[#27724e]/70 transition-colors"
+                        href="./nosotros.html">Nosotros</a>
+                    <a class="text-sm font-semibold hover:text-[#27724e]/70 transition-colors"
+                        href="./contacto.html">Contacto</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <div
+                    class="hidden md:flex items-center bg-[#27724e]/5 rounded-full px-4 py-2 border border-[#27724e]/10 focus-within:ring-2 ring-[#27724e]/20 transition-all">
+                    <span class="material-symbols-outlined text-[#27724e] text-xl !font-light">search</span>
+                    <input
+                        class="bg-transparent border-none focus:ring-0 text-sm placeholder:text-[#27724e]/60 text-[#27724e] w-32 lg:w-48"
+                        placeholder="Buscar rituales..." />
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 hover:bg-[#27724e]/10 rounded-full transition-colors text-[#27724e]">
+                        <span class="material-symbols-outlined !font-light">person</span>
+                    </button>
+                    <button class="p-2 hover:bg-[#27724e]/10 rounded-full transition-colors relative text-[#27724e]">
+                        <span class="material-symbols-outlined !font-light">shopping_bag</span>
+                        <span
+                            class="absolute top-1 right-1 bg-[#D47253] text-white text-[10px] font-bold px-1.5 rounded-full">3</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Menú Móvil Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white hidden flex-col animate-fade-in-up overflow-y-auto">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-[#27724e]/10">
+                <div class="flex flex-col leading-none">
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-[#C5A059] font-bold">Menú</span>
+                    <h2 class="text-xl font-serif font-bold text-[#27724e] tracking-tight">Navegación</h2>
+                </div>
+                <button id="close-menu-btn"
+                    class="p-2 -mr-2 text-[#27724e] hover:bg-[#27724e]/5 rounded-full transition-colors cursor-pointer">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col p-8 gap-6 items-center text-center">
+                <a class="text-2xl font-serif font-bold text-[#27724e] hover:text-[#C5A059] transition-colors"
+                    href="./index.html">Inicio</a>
+                <a class="text-2xl font-serif font-bold text-[#27724e] hover:text-[#C5A059] transition-colors"
+                    href="./tienda.html">Tienda</a>
+                <div class="flex flex-col gap-3">
+                    <button onclick="filterByCategory('Sistema Digestivo')"
+                        class="text-xs font-bold uppercase tracking-widest text-[#27724e]/60 hover:text-[#27724e]">Sistema
+                        Digestivo</button>
+                    <button onclick="filterByCategory('Sistema Inmune')"
+                        class="text-xs font-bold uppercase tracking-widest text-[#27724e]/60 hover:text-[#27724e]">Sistema
+                        Inmune</button>
+                    <button onclick="filterByCategory('Sistema Nervioso')"
+                        class="text-xs font-bold uppercase tracking-widest text-[#27724e]/60 hover:text-[#27724e]">Sistema
+                        Nervioso</button>
+                    <button onclick="filterByCategory('Sistema Hormonal')"
+                        class="text-xs font-bold uppercase tracking-widest text-[#27724e]/60 hover:text-[#27724e]">Sistema
+                        Hormonal</button>
+                </div>
+                <a class="text-2xl font-serif font-bold text-[#27724e] hover:text-[#C5A059] transition-colors"
+                    href="./nosotros.html">Nosotros</a>
+                <a class="text-2xl font-serif font-bold text-[#27724e] hover:text-[#C5A059] transition-colors"
+                    href="./contacto.html">Contacto</a>
+            </nav>
+            <div class="mt-auto p-8 border-t border-[#27724e]/10 flex justify-center gap-8 text-[#27724e]">
+                <span class="material-symbols-outlined text-2xl">search</span>
+                <span class="material-symbols-outlined text-2xl">person</span>
+                <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+            </div>
+        </div>
+
+        <!-- Sub-navegación de Categorías -->
+        <div
+            class="hidden md:block sticky top-[73px] z-40 bg-[#FBFAF8]/95 backdrop-blur border-b border-[#27724e]/5 shadow-sm">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-20 py-3">
+                <div
+                    class="category-bar-container flex flex-nowrap md:flex-wrap items-center justify-start md:justify-center gap-4 overflow-x-auto md:overflow-visible no-scrollbar py-2">
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e] text-white px-5 transition-all shadow-md">
+                        <p class="text-sm font-bold whitespace-nowrap">Todos</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Sistema Digestivo</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Sistema Inmune</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Sistema Nervioso</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Sistema Osteoarticular</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Sistema Hormonal</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Sistema Próstata</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Circulación - Metabólico - Energía</p>
+                    </button>
+                    <button
+                        class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#27724e]/5 hover:bg-[#27724e]/10 border border-[#27724e]/5 px-5 transition-all text-[#27724e]">
+                        <p class="text-sm font-bold whitespace-nowrap">Otros</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <main class="max-w-[1440px] mx-auto w-full flex-grow">
+
+
+            <!-- Catálogo Principal -->
+            <div
+                class="px-6 md:px-20 pt-12 pb-8 text-center md:text-left flex flex-col md:flex-row justify-between items-end border-b border-[#27724e]/5 mb-8">
+                <div>
+                    <span class="text-[#D47253] font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Catálogo
+                        Oficial</span>
+                    <h1 class="text-4xl md:text-5xl font-serif font-black text-[#27724e] tracking-tight">
+                        Nuestra Colección Botánica
+                    </h1>
+                </div>
+                <p class="text-[#27724e]/70 mt-4 md:mt-0 max-w-md text-sm md:text-right">
+                    Mostrando 58 de 58 resultados
+                </p>
+            </div>
+
+            <div class="flex-1 w-full">
+                <!-- Grid de Productos Principal -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gap-y-10">
+
+                    <!-- Producto: Agua de Mar -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("agua-de-mar.jpeg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Agua de Mar</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Fortalece los huesos, remineraliza, alcaliniza y desintoxica, nivela la glucosa, regula ansiedad y depresión.">
+                                Fortalece los huesos, remineraliza, alcaliniza y desintoxica, nivela la glucosa, regula
+                                ansiedad y depresión.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 10</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto: DMSO -->
+                    <div data-category="Sistema Osteoarticular"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("DMSO.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                DMSO</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Dimetilsulfóxido. Coadyuvante en el tratamiento de inflamaciones y dolores musculoesqueléticos.">
+                                Dimetilsulfóxido. Coadyuvante en el tratamiento de inflamaciones y dolores
+                                musculoesqueléticos.
+                            </p>
+
+                            <!-- Selector de Presentación -->
+                            <div class="mb-4" onclick="event.stopPropagation()">
+                                <label
+                                    class="block text-[10px] font-bold text-[#27724e]/40 uppercase mb-1 tracking-widest">Seleccionar
+                                    Tamaño:</label>
+                                <select onchange="updateDMSOPrice(this)"
+                                    class="w-full bg-white border border-[#27724e]/10 rounded-xl px-3 py-2 text-xs font-bold text-[#27724e] focus:ring-2 ring-[#27724e]/20 outline-none transition-all cursor-pointer dmso-select">
+                                    <option value="100" data-size="50ML">50ML - S/. 100</option>
+                                    <option value="150" data-size="100ML">100ML - S/. 150</option>
+                                    <option value="230" data-size="250ML">250ML - S/. 230</option>
+                                </select>
+                            </div>
+
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e] dmso-price-display">S/.
+                                    100</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Producto Destacado 1: CDS -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("CDS.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                CDS</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Dióxido de cloro en solución. Protocolos de desintoxicación y refuerzo inmune.">
+                                Dióxido de cloro en solución. Protocolos de desintoxicación y refuerzo inmune.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 50</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto Destacado 2: MMS -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("mms.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                MMS</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Suplemento mineral maestro para protocolos de limpieza profunda.">Suplemento
+                                mineral maestro para protocolos de limpieza profunda.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 60</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto Destacado 3: Azul de Metileno -->
+                    <div data-category="Sistema Nervioso"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("azul-de-metileno.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Azul de Metileno</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Potente nootrópico y antioxidante mitocondrial para energía y claridad.">
+                                Potente
+                                nootrópico y antioxidante mitocondrial para energía y claridad.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 50</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto Destacado 4: Citrato de Magnesio -->
+                    <div data-category="Sistema Nervioso"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("citrato-de-mangesio.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Citrato de Magnesio</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Magnesio de alta absorción para el sistema nervioso, muscular y descanso.">
+                                Magnesio de alta absorción para el sistema nervioso, muscular y descanso.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 80</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto Destacado 5: Citrato De Potasio -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("citrato-de-potasio.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Citrato De Potasio</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ayuda a eliminar el exceso de sal y líquidos.">Ayuda a eliminar el exceso de sal
+                                y líquidos.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 30</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto Destacado 6: Zeolita -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("zeolita.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Zeolita</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Mineral volcánico para la eliminación selectiva de toxinas y metales pesados.">
+                                Mineral volcánico para la eliminación selectiva de toxinas y metales pesados.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 45</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto Destacado 7: Tierra de Diatomeas -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("tierra-de-deatomeas.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Tierra de Diatomeas</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Depurador intestinal natural y agente desparasitante eficaz.">Depurador
+                                intestinal natural y agente desparasitante eficaz.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 1: Palo De Arco -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("palo-de-arco.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Palo De Arco</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Anticancerígeno antitumoral. Aumenta el sistema inmunológico. Previniendo el cáncer.">
+                                Anticancerígeno antitumoral. Aumenta el sistema inmunológico. Previniendo el cáncer.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 2: Diabexan -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("Diabexan.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Diabexan</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Excelente para regularizar la glucosa. Mejora la circulación sanguínea.">
+                                Excelente para regularizar la glucosa. Mejora la circulación sanguínea.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 3: Neem -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("Neem.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Neem</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ayuda a eliminar: 1. Bacterias 2.Parásitos 3.Hongos">Ayuda a eliminar: 1.
+                                Bacterias 2.Parásitos 3.Hongos</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 4: Higazan Plus -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("higazan-plus.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Higazan Plus</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Desinflama el hígado. Elimina ácido úrico. Elimina infecciones urinarias.">
+                                Desinflama el hígado. Elimina ácido úrico. Elimina infecciones urinarias.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 5: Pasuchaca -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("pasuchaca.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Pasuchaca</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ideal para personas diabéticas regulariza la glucosa.">Ideal para personas
+                                diabéticas regulariza la glucosa.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 6: Yacón -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("Yacon.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Yacón</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antitumoral. Anticancerígeno. Elimina infecciones urinarias. Antioxidante.">
+                                Antitumoral. Anticancerígeno. Elimina infecciones urinarias. Antioxidante.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 7: Ortiga Negra -->
+                    <div data-category="Sistema Próstata"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("Ortiga-negra.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Ortiga Negra</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ayuda a mejorar la digestión. Disminuye el glucosa. Trata la aνεμια.">Ayuda a
+                                mejorar la digestión. Disminuye el glucosa. Trata la aνεμια.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 8: Graviola -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("graviola.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Graviola</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antitumoral. Anticancerígeno. Excelente para diabetes. Antiinflamatorio.">
+                                Antitumoral. Anticancerígeno. Excelente para diabetes. Antiinflamatorio.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 9: Muérdago -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("muerdago.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Muérdago</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Previene el cáncer. Regula la temperatura...">Previene el cáncer. Regula la
+                                temperatura...</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 50</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 10: Chanca Piedra -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("chanca-piedra.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Chanca Piedra</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Elimina cálculos vesiculares renales...">Elimina cálculos vesiculares renales...
+                            </p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 11: Ubos -->
+                    <div data-category="Sistema Hormonal"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("Ubos.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Ubos</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ideal para infecciones urinarias femeninas.">Ideal para infecciones urinarias
+                                femeninas.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 12: Camu Camu -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("camucamu.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Camu Camu</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antioxidante. Mejorando el sistema nervioso...">Antioxidante. Mejorando el
+                                sistema nervioso...</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 13: Curcuma En Cap -->
+                    <div data-category="Sistema Osteoarticular"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("curcuma-en-cap.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Curcuma En Cap</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antiinflamatorio. Antibiótico.">Antiinflamatorio. Antibiótico.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 14: Aguaje -->
+                    <div data-category="Sistema Hormonal"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("aguaje.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Aguaje</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ideal para equilibrar el sistema hormonal.">Ideal para equilibrar el sistema
+                                hormonal.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 15: Sacha Maxx Jergón -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("sacha jergon maxx.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Sacha Maxx Jergón</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Refuerza al sistema inmunológico.">Refuerza al sistema inmunológico.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 17: Kalanchoe Capsulas -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("kalanchoe-cap.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Kalanchoe Capsulas</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Se usa para heridas profundas. Infecciones.">Se usa para heridas profundas.
+                                Infecciones.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 150</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 18: Resveratrol -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("resveratrol.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Resveratrol</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ayuda al cuerpo a combatir enfermedades.">Ayuda al cuerpo a combatir
+                                enfermedades.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 19: D3 Cap -->
+                    <div data-category="Sistema Osteoarticular"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("D3-cap.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                D3 Cap</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Absorbe el calcio. Formación de huesos.">Absorbe el calcio. Formación de huesos.
+                            </p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 85</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 20: Biotin -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("Biotin.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Biotin</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Ayuda en la caída de cabello y calvicie.">Ayuda en la caída de cabello y
+                                calvicie.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 85</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 21: Selenium Cap -->
+                    <div data-category="Sistema Hormonal"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("selenium-cap.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Selenium Cap</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Mejora de la producción tiroidea.">Mejora de la producción tiroidea.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 85</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 22: Glucosamine Cap -->
+                    <div data-category="Sistema Osteoarticular"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("glucosamine-cap.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Glucosamine Cap</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Reparador del cartílago y líquido articular.">Reparador del cartílago y líquido
+                                articular.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 85</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 23: Vitatrum Cap -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("vitatrum-cap.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Vitatrum Cap</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Absorción de minerales y vitaminas.">Absorción de minerales y vitaminas.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 85</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 24: Fish Oil-omega 3 -->
+                    <div data-category="Otros"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("fish-oil-pmega-3.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Fish Oil-omega 3</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Reduce inflamación y colesterol.">Reduce inflamación y colesterol.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 85</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 25: Echinacea -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("echinacea.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Echinacea</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antibacteriano e infecciones víricas.">Antibacteriano e infecciones víricas.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 220</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 26: B12 Cap -->
+                    <div data-category="Sistema Nervioso"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("b12.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                B12 Cap</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Producción de glóbulos rojos y energía.">Producción de glóbulos rojos y energía.
+                            </p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 150</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 27: Antocianinas -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("antocianianas.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Antocianinas</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antioxidante. Antiinflamatorio.">Antioxidante. Antiinflamatorio.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 185</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 28: Ácido Alfa Lipoico -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("Acido-alfa-lipoico.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Ácido Alfa Lipoico</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antioxidante de amplio espectro.">Antioxidante de amplio espectro.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 185</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 29: Centella Asiática -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("sentella-asiatica.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Centella Asiática</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Estimula producción de colágeno.">Estimula producción de colágeno.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 200</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 30: Melatonina -->
+                    <div data-category="Sistema Nervioso"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("melatonina.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Melatonina</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2" title="Produce un sueño reparador.">
+                                Produce un sueño reparador.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 85</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 31: Malato Magnesio -->
+                    <div data-category="Sistema Nervioso"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("malato-de-magnesio.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Malato Magnesio</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Aumenta energía y control de glucosa.">Aumenta energía y control de glucosa.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 80</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 32: Colágeno Flex -->
+                    <div data-category="Sistema Osteoarticular"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("colageno-flex.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Colágeno Flex</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Absorbe el calcio reparando cartílagos.">Absorbe el calcio reparando cartílagos.
+                            </p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 33: Melena De León -->
+                    <div data-category="Sistema Nervioso"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("melena-de-leon.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Melena De León</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Adaptógeno para células enfermas.">Adaptógeno para células enfermas.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 110</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 34: He Shouwu -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("he-shou-wu.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                He Shouwu</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2" title="Rejuvenece. Antioxidante.">
+                                Rejuvenece. Antioxidante.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 35: Clorofila Polvo -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("clorofila.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Clorofila Polvo</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Oxigena la sangre y desintoxica.">Oxigena la sangre y desintoxica.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 50</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 36: Jergon Sacha -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("jergon-sacha.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Jergon Sacha</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Infecciones virales y respiratorias.">Infecciones virales y respiratorias.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 27</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 37: Linpool -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("limpcol.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Linpool</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Adelgazante y control de apetito.">Adelgazante y control de apetito.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 38: Café Gourmet -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("cafe-goutmet.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Café Gourmet</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Café orgánico ideal para enemas.">Café orgánico ideal para enemas.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 38</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 39: Sal Marina -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("sal-marina.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Sal Marina</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Equilibrio de líquidos y electrolitos.">Equilibrio de líquidos y electrolitos.
+                            </p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 40: Aceite De Coco -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("aceite-de-coco.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Aceite De Coco</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Mejora sistema inmune y digestión.">Mejora sistema inmune y digestión.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 41: Miel De Abeja -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("miel-de-aveja.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Miel De Abeja</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antiinflamatorio y antibiótico natural.">Antiinflamatorio y antibiótico
+                                natural.
+                            </p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 42: Jabón Calendula -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("jabon-de-calendula.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Jabón Calendula</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2" title="Elimina manchas y cicatriza.">
+                                Elimina manchas y cicatriza.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 20</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 43: Triple Magnesium -->
+                    <div data-category="Sistema Nervioso"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("triple-magnsesium.jpg");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Triple Magnesium</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Salud de nervios, músculos y huesos.">Salud de nervios, músculos y huesos.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 180</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 44: Achiote -->
+                    <div data-category="Sistema Próstata"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("achiote.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                Achiote</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antiinflamatorio natural, ideal para la próstata y riñones.">Antiinflamatorio
+                                natural, ideal para la próstata y riñones.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 30</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Producto 47: Chlorella -->
+                    <div data-category="Sistema Digestivo"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("chlorella.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Chlorella</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Alga desintoxicante que ayuda a eliminar metales pesados y toxinas del cuerpo.">
+                                Alga desintoxicante que ayuda a eliminar metales pesados y toxinas del cuerpo.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 45</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 50: Erctmax -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("erctmax.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Erctmax</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Suplemento natural para potenciar la vitalidad y energía masculina.">
+                                Suplemento
+                                natural para potenciar la vitalidad y energía masculina.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 51: Gotas Oftalmológicas -->
+                    <div data-category="Otros"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("gotas-oftalmologicas.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <div class="flex text-[#C5A059] text-[16px]">
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="text-xs text-[#27724e]/60 ml-1 pt-[2px]">(New)</span>
+                            </div>
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Gotas Oftalmológicas</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Fórmula natural para el cuidado, hidratación y descanso de la vista.">Fórmula
+                                natural para el cuidado, hidratación y descanso de la vista.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 30</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 53: Molle -->
+                    <div data-category="Otros"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("molle.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <div class="flex text-[#C5A059] text-[16px]">
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="text-xs text-[#27724e]/60 ml-1 pt-[2px]">(New)</span>
+                            </div>
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Molle</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Propiedades antisépticas y antiinflamatorias tradicionales del árbol de Molle.">
+                                Propiedades antisépticas y antiinflamatorias tradicionales del árbol de Molle.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 54: Plata Coloidal -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("plata-coloidal.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <div class="flex text-[#C5A059] text-[16px]">
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="text-xs text-[#27724e]/60 ml-1 pt-[2px]">(New)</span>
+                            </div>
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Plata Coloidal</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antibiótico natural de amplio espectro para fortalecer el sistema inmune.">
+                                Antibiótico natural de amplio espectro para fortalecer el sistema inmune.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 45</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 55: Propóleo -->
+                    <div data-category="Sistema Inmune"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("propoleo.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <div class="flex text-[#C5A059] text-[16px]">
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="material-symbols-outlined text-[16px]">star</span>
+                                <span class="text-xs text-[#27724e]/60 ml-1 pt-[2px]">(New)</span>
+                            </div>
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Propóleo</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Antiséptico natural, ideal para afecciones respiratorias y refuerzo de garganta.">
+                                Antiséptico natural, ideal para afecciones respiratorias y refuerzo de garganta.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 30</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 56: Spirulina -->
+                    <div data-category="Circulación - Metabólico - Energía"
+                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
+                                style='background-image: url("spirulina.png");'></div>
+                            <button
+                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
+                                <span class="material-symbols-outlined text-sm">favorite</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-1">
+                            <h3
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
+                                Spirulina</h3>
+                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
+                                title="Superalimento rico en clorofila para energía celular y nutrición integral.">
+                                Superalimento rico en clorofila para energía celular y nutrición integral.</p>
+                            <div class="mt-auto flex items-center justify-between pt-2">
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <button
+                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+    </div>
+    </main>
+
+
+    <footer class="bg-[#FBFAF8] border-t border-[#27724e]/10 pt-20 pb-10">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-20">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="flex flex-col gap-6">
+                    <div class="flex flex-col leading-none">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-[#C5A059] font-bold">Tienda
+                            Orgánica</span>
+                        <h2 class="text-xl font-serif font-bold text-[#27724e] tracking-tight">Jackelin Laza</h2>
+                    </div>
+                    <p class="text-[#27724e]/80 text-sm leading-relaxed">
+                        Preservando la santidad del Ayurveda a través de productos botánicos éticos, orgánicos y
+                        ancestrales.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h3 class="font-black text-sm uppercase tracking-widest text-[#27724e]">Productos</h3>
+                    <nav class="flex flex-col gap-3">
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Sistema
+                            Digestivo</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Sistema
+                            Inmune</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Sistema
+                            Nervioso</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Sistema
+                            Osteoarticular</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Sistema
+                            Hormonal</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Sistema
+                            Próstata</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Energía
+                            y
+                            Metabolismo</a>
+                    </nav>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h3 class="font-black text-sm uppercase tracking-widest text-[#27724e]">Nuestra Marca</h3>
+                    <nav class="flex flex-col gap-3">
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm"
+                            href="./nosotros.html">La Historia</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm"
+                            href="./nosotros.html">Ética de Origen</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm"
+                            href="./nosotros.html">Sostenibilidad</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm"
+                            href="./contacto.html">Venta al por mayor</a>
+                    </nav>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h3 class="font-black text-sm uppercase tracking-widest text-[#27724e]">Soporte</h3>
+                    <nav class="flex flex-col gap-3">
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm"
+                            href="./contacto.html">Contáctanos</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Envíos
+                            y Devoluciones</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Localizador
+                            de Tiendas</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Preguntas
+                            Frecuentes</a>
+                    </nav>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-[#27724e]/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#27724e]/60 font-medium uppercase tracking-widest">
+                <p>© 2024 Jackelin Laza - Tienda Orgánica. Todos los derechos reservados.</p>
+                <div class="flex gap-8">
+                    <a class="hover:text-[#27724e] transition-colors" href="#">Política de Privacidad</a>
+                    <a class="hover:text-[#27724e] transition-colors" href="#">Términos de Servicio</a>
+                    <a class="hover:text-[#27724e] transition-colors" href="#">Accesibilidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity" id="modal-backdrop"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div
+                    class="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl animate-fade-in-up">
+                    <button type="button"
+                        class="absolute right-4 top-4 z-20 p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 rounded-full transition-colors focus:outline-none"
+                        id="close-modal-btn">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div
+                            class="relative w-full md:w-1/2 h-64 md:h-auto bg-[#FBFAF8] flex items-center justify-center p-8">
+                            <img id="modal-image" src="" alt="Producto"
+                                class="max-h-full max-w-full object-contain drop-shadow-xl rounded-lg">
+                        </div>
+                        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-white">
+                            <div class="mb-6">
+                                <span id="modal-tag"
+                                    class="inline-block bg-[#27724e]/10 text-[#27724e] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">
+                                    Orgánico
+                                </span>
+                                <h2 id="modal-title"
+                                    class="text-3xl md:text-4xl font-serif font-black text-[#27724e] mb-2 leading-tight">
+                                    Título
+                                </h2>
+
+                                <p id="modal-price" class="text-3xl font-light text-[#D47253] mb-6">S/. 0.00</p>
+                                <div class="prose text-[#27724e]/80 mb-8 max-w-none text-base leading-relaxed">
+                                    <p id="modal-description">Descripción...</p>
+                                </div>
+                            </div>
+                            <div class="mt-auto space-y-4">
+                                <button
+                                    class="w-full bg-[#27724e] text-white py-4 rounded-xl font-bold tracking-wide hover:bg-[#1e5c3e] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 transform active:scale-[0.98]">
+                                    <span class="material-symbols-outlined">shopping_bag</span>
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-[100] hidden" aria-labelledby="slide-over-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity opacity-0" id="cart-backdrop"></div>
+        <div class="fixed inset-0 overflow-hidden">
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                    <div class="pointer-events-auto w-screen max-w-md transform transition ease-in-out duration-500 translate-x-full"
+                        id="cart-panel">
+                        <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                            <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                                <div class="flex items-start justify-between">
+                                    <h2 class="text-xl font-serif font-bold text-[#27724e]" id="slide-over-title">Tu
+                                        Carrito</h2>
+                                    <div class="ml-3 flex h-7 items-center">
+                                        <button type="button"
+                                            class="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
+                                            id="close-cart-btn">
+                                            <span class="absolute -inset-0.5"></span>
+                                            <span class="sr-only">Cerrar panel</span>
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8">
+                                    <div class="flow-root">
+                                        <ul role="list" class="-my-6 divide-y divide-gray-200"
+                                            id="cart-items-container">
+                                            <!-- Items will be injected here via JS -->
+                                        </ul>
+                                    </div>
+                                    <div id="empty-cart-message"
+                                        class="hidden flex-col items-center justify-center py-20 text-[#27724e]/50">
+                                        <span
+                                            class="material-symbols-outlined text-6xl mb-4">remove_shopping_cart</span>
+                                        <p class="text-lg">Tu boticario está vacío.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-gray-200 px-4 py-6 sm:px-6 bg-[#FBFAF8]">
+                                <div class="flex justify-between text-base font-medium text-[#27724e]">
+                                    <p>Subtotal</p>
+                                    <p id="cart-total">S/. 0.00</p>
+                                </div>
+                                <p class="mt-0.5 text-sm text-gray-500">Gastos de envío calculados al finalizar.</p>
+                                <div class="mt-6">
+                                    <a href="#" id="checkout-btn"
+                                        class="flex items-center justify-center rounded-xl border border-transparent bg-[#27724e] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#1e5c3e] transition-all transform active:scale-[0.98]">Pagar
+                                        Ahora</a>
+                                </div>
+                                <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
+                                    <p>
+                                        o
+                                        <button type="button"
+                                            class="font-medium text-[#27724e] hover:text-[#1e5c3e] transition-colors"
+                                            id="continue-shopping-btn">
+                                            Continuar Explorando
+                                            <span aria-hidden="true"> &rarr;</span>
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
