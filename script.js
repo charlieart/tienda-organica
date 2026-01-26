@@ -207,6 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
         updateVariantPrice(select, 'miel-price-display');
     };
 
+    // Función global para actualizar precio de Plata Coloidal
+    window.updatePlataPrice = function (select) {
+        updateVariantPrice(select, 'plata-price-display');
+    };
+
     // --- Lógica del Carrito de Compras ---
     const cartDrawer = document.getElementById('cart-drawer');
     const cartPanel = document.getElementById('cart-panel');

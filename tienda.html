@@ -476,7 +476,7 @@
                                 title="Mineral volcánico para la eliminación selectiva de toxinas y metales pesados.">
                                 Mineral volcánico para la eliminación selectiva de toxinas y metales pesados.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 45</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 50</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1859,8 +1859,22 @@
                             <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
                                 title="Antibiótico natural de amplio espectro para fortalecer el sistema inmune.">
                                 Antibiótico natural de amplio espectro para fortalecer el sistema inmune.</p>
+
+                            <!-- Selector de Presentación -->
+                            <div class="mb-4" onclick="event.stopPropagation()">
+                                <label
+                                    class="block text-[10px] font-bold text-[#27724e]/40 uppercase mb-1 tracking-widest">Seleccionar
+                                    Tamaño:</label>
+                                <select onchange="updatePlataPrice(this)"
+                                    class="w-full bg-white border border-[#27724e]/10 rounded-xl px-3 py-2 text-xs font-bold text-[#27724e] focus:ring-2 ring-[#27724e]/20 outline-none transition-all cursor-pointer plata-select">
+                                    <option value="70" data-size="250ML">250ML - S/. 70</option>
+                                    <option value="80" data-size="1/2L">1/2L - S/. 80</option>
+                                </select>
+                            </div>
+
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 70</span>
+                                <span class="font-serif font-black text-xl text-[#27724e] plata-price-display">S/.
+                                    70</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1984,33 +1998,7 @@
                         </div>
                     </div>
 
-                    <!-- Producto: Tintura Veronica -->
-                    <div data-category="Tinturas"
-                        class="group flex flex-col gap-4 bg-[#FBFAF8] p-4 rounded-3xl border border-[#27724e]/5 hover:border-[#27724e]/20 hover:shadow-xl transition-all duration-300">
-                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-white shadow-inner">
-                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-110"
-                                style='background-image: url("tintura-veronica.png");'></div>
-                            <button
-                                class="absolute top-3 right-3 bg-white/80 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:text-[#D47253]">
-                                <span class="material-symbols-outlined text-sm">favorite</span>
-                            </button>
-                        </div>
-                        <div class="flex flex-col flex-1 gap-1">
-                            <h3
-                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
-                                Tintura Veronica</h3>
-                            <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
-                                title="Ayuda a la digestión y salud respiratoria (30ML).">
-                                Ayuda a la digestión y salud respiratoria (30ML).</p>
-                            <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
-                                <button
-                                    class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
-                                    <span class="material-symbols-outlined">add_shopping_cart</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <!-- Producto: Tintura Astrágalo -->
                     <div data-category="Tinturas"
@@ -2392,8 +2380,9 @@
                                 class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
                                 Desinflamin</h3>
                             <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
-                                title="Alivio natural para el dolor y la inflamación articular.">
-                                Alivio natural para el dolor y la inflamación articular.</p>
+                                title="Alivio natural para el dolor y la inflamación articular. Reduce la hinchazón y mejora el flujo sanguíneo y alivia las varices.">
+                                Alivio natural para el dolor y la inflamación articular. Reduce la hinchazón y mejora el
+                                flujo sanguíneo y alivia las varices.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
                                 <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
                                 <button
