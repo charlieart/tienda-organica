@@ -1,32 +1,34 @@
 // Configuración de Tailwind CSS
 // Esta configuración se aplica globalmente antes de que Tailwind procese el DOM.
-tailwind.config = {
-    darkMode: "class",
-    theme: {
-        extend: {
-            colors: {
-                "primary": "#27724e",
-                "terracotta": "#D47253",
-                "sage": "#6a8176",
-                "gold": "#C5A059",
-                "background-light": "#ffffff",
-                "background-dark": "#1b1a18",
-                "surface-light": "#FBFAF8",
-                "surface-dark": "#252422",
-            },
-            fontFamily: {
-                "display": ["Manrope", "sans-serif"],
-                "serif": ["Playfair Display", "serif"]
-            },
-            borderRadius: {
-                "DEFAULT": "0.5rem",
-                "lg": "1rem",
-                "xl": "1.5rem",
-                "full": "9999px"
+if (typeof tailwind !== 'undefined') {
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#27724e",
+                    "terracotta": "#D47253",
+                    "sage": "#6a8176",
+                    "gold": "#C5A059",
+                    "background-light": "#ffffff",
+                    "background-dark": "#1b1a18",
+                    "surface-light": "#FBFAF8",
+                    "surface-dark": "#252422",
+                },
+                fontFamily: {
+                    "display": ["Manrope", "sans-serif"],
+                    "serif": ["Playfair Display", "serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+                },
             },
         },
-    },
-};
+    };
+}
 
 // Lógica de Interacción General
 document.addEventListener('DOMContentLoaded', () => {
