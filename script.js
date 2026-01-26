@@ -62,11 +62,47 @@ document.addEventListener('DOMContentLoaded', () => {
     function openModal(data) {
         if (!productModal) return;
 
-        // Poblar datos
+        // Poblar datos básicos
         document.getElementById('modal-title').textContent = data.title;
         document.getElementById('modal-price').textContent = data.price;
         document.getElementById('modal-description').textContent = data.description;
         document.getElementById('modal-image').src = data.image;
+
+        // Manejo de variantes en el modal
+        const variantsContainer = document.getElementById('modal-variants-container');
+        const selectorWrapper = document.getElementById('modal-selector-wrapper');
+
+        if (variantsContainer && selectorWrapper) {
+            selectorWrapper.innerHTML = ''; // Limpiar
+
+            if (data.selector) {
+                const clonedSelect = data.selector.cloneNode(true);
+                clonedSelect.value = data.selector.value; // Sincronizar valor inicial
+
+                // Quitar el ID original para evitar conflictos si tuviera
+                clonedSelect.removeAttribute('id');
+
+                // Escuchar cambios en el selector del modal
+                clonedSelect.addEventListener('change', (e) => {
+                    const selectedOption = e.target.options[e.target.selectedIndex];
+                    const newPrice = `S/. ${e.target.value}`;
+                    const sizeLabel = selectedOption.getAttribute('data-size') || selectedOption.textContent.split('-')[0].trim();
+
+                    document.getElementById('modal-price').textContent = newPrice;
+                    document.getElementById('modal-title').textContent = `${data.originalTitle} (${sizeLabel})`;
+
+                    // Sincronizar hacia atrás con la tarjeta original
+                    data.selector.value = e.target.value;
+                    // Disparar evento de cambio original para que se actualice el precio en la tarjeta si tiene lógica asociada
+                    data.selector.dispatchEvent(new Event('change'));
+                });
+
+                selectorWrapper.appendChild(clonedSelect);
+                variantsContainer.classList.remove('hidden');
+            } else {
+                variantsContainer.classList.add('hidden');
+            }
+        }
 
         // Mostrar modal
         productModal.classList.remove('hidden');
@@ -78,6 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!productModal) return;
         productModal.classList.add('hidden');
         document.body.style.overflow = '';
+
+        // Limpiar variantes al cerrar
+        const variantsContainer = document.getElementById('modal-variants-container');
+        if (variantsContainer) variantsContainer.classList.add('hidden');
     }
 
     // Event Listeners para cerrar
@@ -99,13 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Evitar si se hizo click en el botón de agregar al carrito o favoritos
             if (e.target.closest('button')) return;
 
-            let title = card.querySelector('h3') ? card.querySelector('h3').textContent : "Producto";
-            const priceEl = card.querySelector('.font-black, .font-serif.font-black.text-xl, .dmso-price-display');
+            const originalTitle = card.querySelector('h3') ? card.querySelector('h3').textContent : "Producto";
+            let title = originalTitle;
+            const priceEl = card.querySelector('.font-black, .font-serif.font-black, .dmso-price-display, .agua-mar-price-display');
             const price = priceEl ? priceEl.textContent : "S/. 0.00";
             const pEl = card.querySelector('p');
             const description = pEl ? pEl.textContent : "";
 
-            // Manejo de variaciones (como tamaños)
+            // Manejo de variaciones (como tamaños) en la apertura inicial
             const selectSize = card.querySelector('select');
             if (selectSize) {
                 const selectedOption = selectSize.options[selectSize.selectedIndex];
@@ -131,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (imgTag) image = imgTag.src;
                 }
 
-                openModal({ title, price, description, image });
+                openModal({ title, originalTitle, price, description, image, selector: selectSize });
             }
         }
     });
