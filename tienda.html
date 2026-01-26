@@ -1562,12 +1562,26 @@
                         <div class="flex flex-col flex-1 gap-1">
 
                             <h3
-                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
                                 Aceite De Coco</h3>
                             <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
                                 title="Mejora sistema inmune y digestión.">Mejora sistema inmune y digestión.</p>
+
+                            <!-- Selector de Presentación -->
+                            <div class="mb-4" onclick="event.stopPropagation()">
+                                <label
+                                    class="block text-[10px] font-bold text-[#27724e]/40 uppercase mb-1 tracking-widest">Seleccionar
+                                    Tamaño:</label>
+                                <select onchange="updateCocoPrice(this)"
+                                    class="w-full bg-white border border-[#27724e]/10 rounded-xl px-3 py-2 text-xs font-bold text-[#27724e] focus:ring-2 ring-[#27724e]/20 outline-none transition-all cursor-pointer coco-select">
+                                    <option value="30" data-size="250ML">250ML - S/. 30</option>
+                                    <option value="85" data-size="1L">1L - S/. 85</option>
+                                </select>
+                            </div>
+
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <span class="font-serif font-black text-xl text-[#27724e] coco-price-display">S/.
+                                    30</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1589,14 +1603,29 @@
                         <div class="flex flex-col flex-1 gap-1">
 
                             <h3
-                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e]">
+                                class="font-bold text-lg leading-tight group-hover:text-[#27724e] transition-colors text-[#27724e] uppercase">
                                 Miel De Abeja</h3>
                             <p class="text-[#27724e]/70 text-xs mb-2 line-clamp-2"
                                 title="Antiinflamatorio y antibiótico natural.">Antiinflamatorio y antibiótico
                                 natural.
                             </p>
+
+                            <!-- Selector de Presentación -->
+                            <div class="mb-4" onclick="event.stopPropagation()">
+                                <label
+                                    class="block text-[10px] font-bold text-[#27724e]/40 uppercase mb-1 tracking-widest">Seleccionar
+                                    Peso:</label>
+                                <select onchange="updateMielPrice(this)"
+                                    class="w-full bg-white border border-[#27724e]/10 rounded-xl px-3 py-2 text-xs font-bold text-[#27724e] focus:ring-2 ring-[#27724e]/20 outline-none transition-all cursor-pointer miel-select">
+                                    <option value="15" data-size="250G">250G - S/. 15</option>
+                                    <option value="25" data-size="750G">750G - S/. 25</option>
+                                    <option value="40" data-size="1KG">1KG - S/. 40</option>
+                                </select>
+                            </div>
+
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
+                                <span class="font-serif font-black text-xl text-[#27724e] miel-price-display">S/.
+                                    15</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>

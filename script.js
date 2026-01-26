@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const originalTitle = card.querySelector('h3') ? card.querySelector('h3').textContent : "Producto";
             let title = originalTitle;
-            const priceEl = card.querySelector('.font-black, .font-serif.font-black, .dmso-price-display, .agua-mar-price-display');
+            const priceEl = card.querySelector('.font-black, .font-serif.font-black, .dmso-price-display, .agua-mar-price-display, .coco-price-display, .miel-price-display');
             const price = priceEl ? priceEl.textContent : "S/. 0.00";
             const pEl = card.querySelector('p');
             const description = pEl ? pEl.textContent : "";
@@ -177,24 +177,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Función global para actualizar precios de productos con variantes
-    window.updateDMSOPrice = function (select) {
+    // Función genérica para actualizar precios de variantes
+    window.updateVariantPrice = function (select, displayClass) {
         const card = select.closest('.group');
         if (!card) return;
-        const priceDisplay = card.querySelector('.dmso-price-display');
+        const priceDisplay = card.querySelector(`.${displayClass}`);
         if (priceDisplay) {
             priceDisplay.textContent = `S/. ${select.value}`;
         }
     };
 
+    // Función global para actualizar precios de productos con variantes
+    window.updateDMSOPrice = function (select) {
+        updateVariantPrice(select, 'dmso-price-display');
+    };
+
     // Función global para actualizar precio de Agua de Mar
     window.updateAguaMarPrice = function (select) {
-        const card = select.closest('.group');
-        if (!card) return;
-        const priceDisplay = card.querySelector('.agua-mar-price-display');
-        if (priceDisplay) {
-            priceDisplay.textContent = `S/. ${select.value}`;
-        }
+        updateVariantPrice(select, 'agua-mar-price-display');
+    };
+
+    // Función global para actualizar precio de Aceite de Coco
+    window.updateCocoPrice = function (select) {
+        updateVariantPrice(select, 'coco-price-display');
+    };
+
+    // Función global para actualizar precio de Miel de Abeja
+    window.updateMielPrice = function (select) {
+        updateVariantPrice(select, 'miel-price-display');
     };
 
     // --- Lógica del Carrito de Compras ---
@@ -433,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (card) {
                 e.stopPropagation(); // Detener que se abra el modal de detalle
                 let title = card.querySelector('h3').textContent;
-                const priceEl = card.querySelector('.font-black, .font-serif.font-black, .dmso-price-display');
+                const priceEl = card.querySelector('.font-black, .font-serif.font-black, .dmso-price-display, .agua-mar-price-display, .coco-price-display, .miel-price-display');
                 const price = priceEl ? priceEl.textContent : "S/. 0.00";
 
                 // Manejo de variaciones (como tamaños)
