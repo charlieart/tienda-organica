@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Actualizar texto de resultados si existe
-            const resultText = document.querySelector('.text-\\[\\#27724e\\]\\/70.text-sm.md\\:text-right');
+            const resultText = document.getElementById('results-count');
             if (resultText) {
                 if (query.length > 0) {
                     resultText.textContent = `Encontrados ${foundCount} resultados para "${query}"`;
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Actualizar contador de resultados
-        const resultText = document.querySelector('.text-\\[\\#27724e\\]\\/70.text-sm.md\\:text-right');
+        const resultText = document.getElementById('results-count');
         if (resultText) {
             resultText.textContent = `Mostrando ${visibleCount} de ${productCards.length} resultados`;
         }
