@@ -238,8 +238,22 @@
                                 title="Fortalece los huesos, remineraliza, alcaliniza y desintoxica, nivela la glucosa, regula ansiedad y depresión.">
                                 Fortalece los huesos, remineraliza, alcaliniza y desintoxica, nivela la glucosa, regula
                                 ansiedad y depresión.</p>
+
+                            <!-- Selector de Presentación -->
+                            <div class="mb-4" onclick="event.stopPropagation()">
+                                <label
+                                    class="block text-[10px] font-bold text-[#27724e]/40 uppercase mb-1 tracking-widest">Seleccionar
+                                    Tamaño:</label>
+                                <select onchange="updateAguaMarPrice(this)"
+                                    class="w-full bg-white border border-[#27724e]/10 rounded-xl px-3 py-2 text-xs font-bold text-[#27724e] focus:ring-2 ring-[#27724e]/20 outline-none transition-all cursor-pointer agua-mar-select">
+                                    <option value="10" data-size="1L">1L - S/. 10</option>
+                                    <option value="85" data-size="11L">11L - S/. 85</option>
+                                </select>
+                            </div>
+
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 10</span>
+                                <span class="font-serif font-black text-xl text-[#27724e] agua-mar-price-display">S/.
+                                    10</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -341,7 +355,7 @@
                                 title="Suplemento mineral maestro para protocolos de limpieza profunda.">Suplemento
                                 mineral maestro para protocolos de limpieza profunda.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 60</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 80</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -426,7 +440,7 @@
                                 title="Ayuda a eliminar el exceso de sal y líquidos.">Ayuda a eliminar el exceso de sal
                                 y líquidos.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 30</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -482,7 +496,7 @@
                                 title="Depurador intestinal natural y agente desparasitante eficaz.">Depurador
                                 intestinal natural y agente desparasitante eficaz.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 50</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -819,7 +833,7 @@
                                 title="Antioxidante. Mejorando el sistema nervioso...">Antioxidante. Mejorando el
                                 sistema nervioso...</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 35</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1694,7 +1708,7 @@
                                 title="Alga desintoxicante que ayuda a eliminar metales pesados y toxinas del cuerpo.">
                                 Alga desintoxicante que ayuda a eliminar metales pesados y toxinas del cuerpo.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 45</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 70</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1759,7 +1773,7 @@
                                 title="Fórmula natural para el cuidado, hidratación y descanso de la vista.">Fórmula
                                 natural para el cuidado, hidratación y descanso de la vista.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 30</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 15</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1830,7 +1844,7 @@
                                 title="Antibiótico natural de amplio espectro para fortalecer el sistema inmune.">
                                 Antibiótico natural de amplio espectro para fortalecer el sistema inmune.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 45</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 70</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1892,7 +1906,7 @@
                                 title="Superalimento rico en clorofila para energía celular y nutrición integral.">
                                 Superalimento rico en clorofila para energía celular y nutrición integral.</p>
                             <div class="mt-auto flex items-center justify-between pt-2">
-                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 40</span>
+                                <span class="font-serif font-black text-xl text-[#27724e]">S/. 25</span>
                                 <button
                                     class="bg-[#27724e]/10 hover:bg-[#27724e] text-[#27724e] hover:text-white p-2.5 rounded-xl transition-all shadow-sm">
                                     <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -1962,9 +1976,12 @@
                     <nav class="flex flex-col gap-3">
                         <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm"
                             href="./contacto.html">Contáctanos</a>
-                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm"
-                            href="./contacto.html">Localizador
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Envíos
+                            y Devoluciones</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Localizador
                             de Tiendas</a>
+                        <a class="text-[#27724e]/70 hover:text-[#27724e] transition-colors text-sm" href="#">Preguntas
+                            Frecuentes</a>
                     </nav>
                 </div>
             </div>
@@ -2096,7 +2113,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
